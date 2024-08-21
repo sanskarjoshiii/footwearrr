@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Bharat Footwear</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1{
+            color: #F9DBBA;
+            font-family: 'Comic Sans MS', bold;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            background-image: url('https://i.etsystatic.com/13505089/r/il/b4353b/1410984310/il_570xN.1410984310_45nt.jpg'); /* Add your background image */
+            background-size: cover;
+            background-blend-mode: overlay;
+            background-attachment: fixed;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        header {
+            background: #1F316F;
+            color: white;
+            padding: 25px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav button {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        nav button:hover {
+            background-color: #777;
+        }
+
+        .login-container {
+            max-width: 400px;
+            
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #5B99C2;
+        }
+
+        .login-container h2 {
+            font-family: 'Comic Sans MS', bold;
+            margin-bottom: 20px;
+            color:#fdf9f9;
+        }
+
+        .login-container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            padding: 10px 20px;
+            font-family: 'Comic Sans MS', bold;
+            background-color: #fafafa;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-container button:hover {
+            background-color: #218838;
+        }
+
+        .company-circle {
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            border-radius: 50%;
+            background-color: #1A4870;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px;
+            margin-top: 190px;
+            margin-bottom: 100px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .company-circle:hover {
+       
+            background-color: #1A4870;
+        }
+
+        .product {
+            display: inline-block;
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            text-align: left;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product p {
+            margin: 10px 0;
+        }
+
+        .product button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .product button:hover {
+            background-color: #0056b3;
+        }
+
+        #cart {
+            padding: 20px;
+            max-width: 600px;
+            margin-top: 20px;
+            margin-left: 100px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart h2 {
+            margin-bottom: 20px;
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #cart input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        #cartBtn {
+            background-color: #5B99C2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #cart button:hover {
+            background-color: #218838;
+        }
+
+        #placedOrdersBtn {
+            background-color: #5B99C2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #placedOrders h2 {
+            margin-bottom: 20px;
+        }
+
+        #placedOrders ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #placedOrders li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #deleteOrdersBtn, #adminClearOrdersBtn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #deleteOrdersBtn:hover, #adminClearOrdersBtn:hover {
+            background-color: #c82333;
+        }
+
+        #shippedOrders {
+            
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #shippedOrders h2 {
+            margin-bottom: 20px;
+        }
+
+        #shippedOrders ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #shippedOrders li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #shippedOrdersBtn  {
+            background-color: #f6f8f7;
+            color: #080505;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #shippedOrders button:hover {
+            background-color: #c82333;
+        }
+
+        .video-section {
+            margin: 20px auto;
+            max-width: 80%;
+        }
+
+        .video-section video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #adminPage {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            margin-top: 100px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+       
+        #adminContent h2 {
+            margin-bottom: 20px;
+        }
+
+        #adminOrderList li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #adminClearOrdersBtn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #adminClearOrdersBtn:hover {
+            background-color: #c82333;
+        }
+        .profile-button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .profile-button:hover {
+            background-color: #45a049;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            margin-top: 50px;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: #1F316F;
+            background-color: #5B99C2;
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #1F316F;
+            color:white;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #5B99C2;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #5B99C2;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <h2>Login</h2>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button id="loginBtn">Login</button>
+    </div>
+
+    <!-- Customer Page -->
+    <div id="customerPage" style="display:none;">
+        <header>
+            <h1>New Bharat Footwear</h1><br>
+        
+            <nav>
+                <button id="cartBtn">Cart</button>
+                <button id="placedOrdersBtn">Placed Orders</button>
+                <button id="shippedOrdersBtn">Shipped Orders</button>
+                <button class="profile-button" onclick="openProfile()">Profile</button>
+            </nav>
+        </header>
+        
+        <div id="profileModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeProfile()">&times;</span>
+                <h2>Profile</h2><br>
+                <!-- Profile form or information goes here -->
+                <p>Name: <input type="text" id="name" /></p><br>
+                <p>Email: <input type="text" id="email" readonly /></p><br>
+                <p>Age: <input type="text" id="age" /></p><br>
+                <p>Mobile No.: <input type="text" id="mobile" /></p><br>
+                <button onclick="saveProfile()">Save</button>
+            </div>
+        </div>
+        <main>
+            <section>
+                <div class="company-circle" data-company="Sparx">Sparx</div>
+                <div class="company-circle" data-company="Adidas">Adidas</div>
+                <div class="company-circle" data-company="Nike">Nike</div>
+                <div class="company-circle" data-company="Van">Van</div>
+                <div class="company-circle" data-company="Bata">Bata</div>
+                <div class="company-circle" data-company="Lancer">Lancer</div>
+                <div class="company-circle" data-company="Acolight">Aco light</div>
+                <div class="company-circle" data-company="Flite">Flite</div>
+                <div class="company-circle" data-company="Campus">Campus</div>
+                
+            </section>
+
+            <section id="productDisplay">
+                <!-- Products will be loaded here -->
+            </section>
+
+            <section id="cart" style="display:none;">
+                <h2>Shopping Cart</h2>
+                <ul id="cartItems">
+                    <!-- Cart items will be displayed here -->
+                </ul>
+                <h3>Enter Your Details</h3><br>
+                <label for="customerName">Name:</label>
+                <input type="text" id="customerName" required>
+                <label for="customerAddress">Address:</label>
+                <input type="text" id="customerAddress" required>
+                <label for="customerMobile">Mobile Number:</label>
+                <input type="text" id="customerMobile" required>
+                <button id="placeOrderBtn">Place Order</button>
+            </section>
+
+            <section id="placedOrders" style="display:none;">
+                <h2>Placed Orders</h2>
+                <ul id="orderList">
+                    <!-- Placed orders will be displayed here -->
+                </ul>
+                <button id="deleteOrdersBtn">Delete All Orders</button>
+            </section>
+
+            <section id="shippedOrders" style="display:none;">
+                <h2>Shipped Orders</h2>
+                <ul id="shippedOrderList">
+                    <!-- Shipped orders will be displayed here -->
+                </ul>
+                <button id="clearShippedOrdersBtn">Clear Shipped Orders</button>
+            </section>
+
+            <section class="video-section">
+                <video controls>
+                    <source src="https://videos.pexels.com/video-files/853958/853958-hd_1920_1080_30fps.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </section>
+        </main>
+    </div>
+
+    <!-- Admin Page -->
+    <div id="adminPage" style="display:none;">
+        <header>
+            <h1>Admin Panel</h1>
+        </header>
+
+        <main id="adminContent">
+            <h2>Orders</h2>
+            <ul id="adminOrderList">
+                <!-- Admin orders will be displayed here -->
+            </ul>
+            <button id="adminClearOrdersBtn">Clear All Orders</button>
+
+            <h2>Shipped Orders</h2>
+            <ul id="adminShippedOrderList">
+                <!-- Admin shipped orders will be displayed here -->
+            </ul>
+            <button id="adminClearShippedOrdersBtn">Clear All Shipped Orders</button>
+        </main>
+        
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let placedOrders = JSON.parse(localStorage.getItem('placedOrders')) || [];
+        let shippedOrders = JSON.parse(localStorage.getItem('shippedOrders')) || [];
+
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === 'customer@example.com' && password === 'customer') {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('customerPage').style.display = 'block';
+            } else if (email === 'admin@example.com' && password === 'admin') {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('adminPage').style.display = 'block';
+                displayAdminOrders();
+                displayAdminShippedOrders();
+            } else {
+                alert('Invalid email or password.');
+            }
+        });
+        function openProfile() {
+            document.getElementById('profileModal').style.display = 'block'; // Show the modal
+        }
+
+        function closeProfile() {
+            document.getElementById('profileModal').style.display = 'none'; // Hide the modal
+        }
+        function saveProfile() {
+        // Retrieve values from the profile form
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const age = document.getElementById('age').value;
+        const mobile = document.getElementById('mobile').value;
+        // Example: Save profile data to localStorage (or send to server)
+        localStorage.setItem('profileName', name);
+        localStorage.setItem('profileEmail', email);
+        localStorage.setItem('profileAge', age);
+        localStorage.setItem('profileMobileNo', mobile);
+
+        // Optionally, you might want to provide feedback to the user
+        alert('Profile saved successfully!');
+        
+        // Close the modal after saving
+        closeProfile();
+    }
+
+    
+
+    // Optional: Load profile data when the modal is opened
+    function openProfile() {
+        document.getElementById('profileModal').style.display = 'block'; // Show the modal
+
+        // Load existing profile data (example from localStorage)
+        document.getElementById('name').value = localStorage.getItem('profileName') || '';
+        document.getElementById('email').value = localStorage.getItem('profileEmail') || '';
+        document.getElementById('age').value = localStorage.getItem('profileAge') || '';
+        document.getElementById('mobile').value = localStorage.getItem('profileMobileNo') || '';
+    }
+
+    function closeProfile() {
+        document.getElementById('profileModal').style.display = 'none'; // Hide the modal
+    }
+        const companies = {
+            Sparx: [
+                { name: 'Sparx Model A', price: 50, img: 'https://via.placeholder.com/200?text=Sparx+Model+A' },
+                { name: 'Sparx Model B', price: 60, img: 'https://via.placeholder.com/200?text=Sparx+Model+B' }
+            ],
+            Adidas: [
+                { name: 'Adidas Model X', price: 70, img: 'https://via.placeholder.com/200?text=Adidas+Model+X' },
+                { name: 'Adidas Model Y', price: 80, img: 'https://via.placeholder.com/200?text=Adidas+Model+Y' }
+            ],
+            Nike: [
+                { name: 'Nike Air Max', price: 90, img: 'https://via.placeholder.com/200?text=Nike+Air+Max' },
+                { name: 'Nike Free Run', price: 100, img: 'https://via.placeholder.com/200?text=Nike+Free+Run' }
+            ],
+            Van: [
+                { name: 'Van Classic', price: 45, img: 'https://via.placeholder.com/200?text=Van+Classic' },
+                { name: 'Van Old Skool', price: 55, img: 'https://via.placeholder.com/200?text=Van+Old+Skool' }
+            ],
+            Bata: [
+                { name: 'Bata Trendy', price: 40, img: 'https://via.placeholder.com/200?text=Bata+Trendy' },
+                { name: 'Bata Comfort', price: 50, img: 'https://via.placeholder.com/200?text=Bata+Comfort' }
+            ],
+            Lancer: [
+                { name: 'Lancer Trendy', price: 40, img: 'https://via.placeholder.com/200?text=Bata+Trendy' },
+                { name: 'Lancer Comfort', price: 50, img: 'https://via.placeholder.com/200?text=Bata+Comfort' }
+            ],
+            Acolight: [
+                { name: 'Bata Trendy', price: 40, img: 'https://via.placeholder.com/200?text=Bata+Trendy' },
+                { name: 'Bata Comfort', price: 50, img: 'https://via.placeholder.com/200?text=Bata+Comfort' }
+            ],
+            Flite: [
+                { name: 'Bata Trendy', price: 40, img: 'https://via.placeholder.com/200?text=Bata+Trendy' },
+                { name: 'Bata Comfort', price: 50, img: 'https://via.placeholder.com/200?text=Bata+Comfort' }
+            ],
+            Campus: [
+                { name: 'Bata Trendy', price: 40, img: 'https://via.placeholder.com/200?text=Bata+Trendy' },
+                { name: 'Bata Comfort', price: 50, img: 'https://via.placeholder.com/200?text=Bata+Comfort' }
+            ],
+            Paragon: [
+                { name: 'Bata Trendy', price: 40, img: 'https://via.placeholder.com/200?text=Bata+Trendy' },
+                { name: 'Bata Comfort', price: 50, img: 'https://via.placeholder.com/200?text=Bata+Comfort' }
+            ]
+
+            
+        };
+
+        const companyCircles = document.querySelectorAll('.company-circle');
+        const productDisplay = document.getElementById('productDisplay');
+        const cartSection = document.getElementById('cart');
+        const placedOrdersSection = document.getElementById('placedOrders');
+        const shippedOrdersSection = document.getElementById('shippedOrders');
+
+        companyCircles.forEach(circle => {
+            circle.addEventListener('click', () => {
+                const company = circle.getAttribute('data-company');
+                displayProducts(company);
+            });
+        });
+
+        document.getElementById('cartBtn').addEventListener('click', () => {
+            cartSection.style.display = 'block';
+            placedOrdersSection.style.display = 'none';
+            shippedOrdersSection.style.display = 'none';
+            displayCartItems();
+        });
+
+        document.getElementById('placedOrdersBtn').addEventListener('click', () => {
+            placedOrdersSection.style.display = 'block';
+            cartSection.style.display = 'none';
+            shippedOrdersSection.style.display = 'none';
+            displayPlacedOrders();
+        });
+
+        document.getElementById('shippedOrdersBtn').addEventListener('click', () => {
+            shippedOrdersSection.style.display = 'block';
+            cartSection.style.display = 'none';
+            placedOrdersSection.style.display = 'none';
+            displayShippedOrders();
+        });
+
+        document.getElementById('placeOrderBtn').addEventListener('click', () => {
+            const name = document.getElementById('customerName').value;
+            const address = document.getElementById('customerAddress').value;
+            const mobile = document.getElementById('customerMobile').value;
+            const date = new Date().toLocaleDateString();
+
+            if (name && address && mobile && cart.length > 0) {
+                const order = { date, name, address, mobile, items: cart, status: 'Placed' };
+                placedOrders.push(order);
+                localStorage.setItem('placedOrders', JSON.stringify(placedOrders));
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                displayCartItems();
+                displayPlacedOrders();
+                alert('Order placed successfully!');
+            } else {
+                alert('Please fill in all details and add items to the cart.');
+            }
+        });
+
+        function displayProducts(company) {
+            const products = companies[company] || [];
+            productDisplay.innerHTML = products.map(product => `
+                <div class="product">
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>$${product.price}</p>
+                    <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(name, price) {
+            const item = { name, price };
+            cart.push(item);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+
+        function displayCartItems() {
+            const cartItemsList = document.getElementById('cartItems');
+            cartItemsList.innerHTML = '';
+            cart.forEach(item => {
+                const itemElement = document.createElement('li');
+                itemElement.textContent = `${item.name} - $${item.price}`;
+                cartItemsList.appendChild(itemElement);
+            });
+        }
+
+        function displayPlacedOrders() {
+            const orderList = document.getElementById('orderList');
+            orderList.innerHTML = '';
+            placedOrders.forEach((order, index) => {
+                const orderElement = document.createElement('li');
+                orderElement.innerHTML = `
+                    <p>Date: ${order.date}</p>
+                    <p>Name: ${order.name}</p>
+                    <p>Address: ${order.address}</p>
+                    <p>Mobile: ${order.mobile}</p>
+                    <p>Items:</p>
+                    <ul>
+                        ${order.items.map(item => `<li>${item.name} - $${item.price}</li>`).join('')}
+                    </ul>
+                `;
+                orderList.appendChild(orderElement);
+            });
+        }
+
+        function displayShippedOrders() {
+            const shippedOrderList = document.getElementById('shippedOrderList');
+            shippedOrderList.innerHTML = '';
+            shippedOrders.forEach(order => {
+                const orderElement = document.createElement('li');
+                orderElement.innerHTML = `
+                    <p>Date: ${order.date}</p>
+                    <p>Name: ${order.name}</p>
+                    <p>Address: ${order.address}</p>
+                    <p>Mobile: ${order.mobile}</p>
+                    <p>Items:</p>
+                    <ul>
+                        ${order.items.map(item => `<li>${item.name} - $${item.price}</li>`).join('')}
+                    </ul>
+                `;
+                shippedOrderList.appendChild(orderElement);
+            });
+        }
+
+        function displayAdminOrders() {
+            const adminOrderList = document.getElementById('adminOrderList');
+            adminOrderList.innerHTML = '';
+            placedOrders.forEach((order, index) => {
+                const orderElement = document.createElement('li');
+                orderElement.innerHTML = `
+                    <p>Date: ${order.date}</p>
+                    <p>Name: ${order.name}</p>
+                    <p>Address: ${order.address}</p>
+                    <p>Mobile: ${order.mobile}</p>
+                    <p>Items:</p>
+                    <ul>
+                        ${order.items.map(item => `<li>${item.name} - $${item.price}</li>`).join('')}
+                    </ul>
+                    <button onclick="markAsShipped(${index})">Mark as Shipped</button>
+                `;
+                adminOrderList.appendChild(orderElement);
+            });
+        }
+
+        function displayAdminShippedOrders() {
+            const adminShippedOrderList = document.getElementById('adminShippedOrderList');
+            adminShippedOrderList.innerHTML = '';
+            shippedOrders.forEach(order => {
+                const orderElement = document.createElement('li');
+                orderElement.innerHTML = `
+                    <p>Date: ${order.date}</p>
+                    <p>Name: ${order.name}</p>
+                    <p>Address: ${order.address}</p>
+                    <p>Mobile: ${order.mobile}</p>
+                    <p>Items:</p>
+                    <ul>
+                        ${order.items.map(item => `<li>${item.name} - $${item.price}</li>`).join('')}
+                    </ul><br>
+                `;
+                adminShippedOrderList.appendChild(orderElement);
+            });
+        }
+
+        function markAsShipped(index) {
+            const order = placedOrders.splice(index, 1)[0];
+            order.status = 'Shipped';
+            shippedOrders.push(order);
+            localStorage.setItem('placedOrders', JSON.stringify(placedOrders));
+            localStorage.setItem('shippedOrders', JSON.stringify(shippedOrders));
+            displayAdminOrders();
+            displayAdminShippedOrders();
+            updateOrderStatusInCustomerPanel(order);
+        }
+
+        function updateOrderStatusInCustomerPanel(shippedOrder) {
+            // Update the status in the customer panel
+            const placedOrderIndex = placedOrders.findIndex(order => order.date === shippedOrder.date && order.name === shippedOrder.name);
+            if (placedOrderIndex > -1) {
+                placedOrders[placedOrderIndex].status = 'Shipped';
+                localStorage.setItem('placedOrders', JSON.stringify(placedOrders));
+                displayPlacedOrders();
+            }
+        }
+
+        document.getElementById('adminClearOrdersBtn').addEventListener('click', () => {
+            localStorage.removeItem('placedOrders');
+            placedOrders = [];
+            displayAdminOrders();
+        });
+
+        document.getElementById('adminClearShippedOrdersBtn').addEventListener('click', () => {
+            localStorage.removeItem('shippedOrders');
+            shippedOrders = [];
+            displayAdminShippedOrders();
+        });
+
+        document.getElementById('clearShippedOrdersBtn').addEventListener('click', () => {
+            localStorage.removeItem('shippedOrders');
+            shippedOrders = [];
+            displayShippedOrders();
+        });
+    </script>
+</body>
+</html>
